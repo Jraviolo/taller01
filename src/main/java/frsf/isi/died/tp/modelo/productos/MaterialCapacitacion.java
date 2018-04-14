@@ -7,6 +7,7 @@ package frsf.isi.died.tp.modelo.productos;
 
 import java.util.ArrayList;
 
+
 import frsf.isi.died.tp.util.Ordenable;
 
 /**
@@ -22,7 +23,7 @@ import frsf.isi.died.tp.util.Ordenable;
  *URL: https://github.com/Jraviolo/taller01.git
  *
  */
-public abstract class MaterialCapacitacion {
+public abstract class MaterialCapacitacion implements Ordenable{
 	protected Integer id;
 	public Integer getId() {
 		return id;
@@ -121,11 +122,22 @@ public abstract class MaterialCapacitacion {
 	// [Titulo: <titulo> ; Precio: <precio> ]
 	
 	public String toString(){
-		String stringAux="Titulo: "+this.titulo+"; Precio: "+this.precio();
+		String stringAux="[Titulo: "+this.titulo+"; Precio: "+this.precio()+"]";
 		
 	return stringAux;
 	}
 	
 	// TODO 10: implementar Ordenable
+	public final int valor(){
+		double precio=precio();
+		int aux = (int)Math.floor(precio);
+		return aux;
+	}
+	
 
+	/* invocamos el metodo abstracto precio(),
+	 * el mismo funciona ya que esta redefinido en las clases Libro y Video\
+	 */
+	
+	
 }

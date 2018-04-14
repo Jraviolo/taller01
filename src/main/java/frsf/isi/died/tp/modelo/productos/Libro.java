@@ -110,7 +110,7 @@ public class Libro extends MaterialCapacitacion {
 	public Double precio() {
 		//TODO 05: implementar metodo abstracto
 		double precio, factorPaginas;
-		factorPaginas=(1.0+ (0.3 * this.paginas/150));
+		factorPaginas=(1.0+ (0.03 * this.paginas/150));
 		
 		precio= (super.costo + this.precioCompra*factorPaginas);
 		
