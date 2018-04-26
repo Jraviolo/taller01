@@ -138,6 +138,17 @@ public abstract class MaterialCapacitacion implements Ordenable{
 	/* invocamos el metodo abstracto precio(),
 	 * el mismo funciona ya que esta redefinido en las clases Libro y Video\
 	 */
+	public boolean equals(Object anObject) {
+		MaterialCapacitacion aux;
+		if(anObject instanceof MaterialCapacitacion) {
+			aux=(MaterialCapacitacion) anObject;
+			if(this.titulo.equalsIgnoreCase(aux.titulo)){
+				return true;
+			}
+							
+		}
+		return false;
+	}
 	
 	
 }

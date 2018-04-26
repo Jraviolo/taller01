@@ -117,6 +117,15 @@ public class Libro extends MaterialCapacitacion {
 		return precio;
 	}
 
+public boolean equals(Object obj) {
+		
+		if(obj instanceof Libro && super.equals(obj)) {
+		 return true;	
+		}
+		
+	return false;
+	
+	}
 	
 
 }
