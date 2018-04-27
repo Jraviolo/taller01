@@ -150,11 +150,12 @@ public abstract class MaterialCapacitacion implements Ordenable, Comparable<Mate
 	}
 	
 	public int compareTo(MaterialCapacitacion material) {
-		if(this.titulo.compareTo(material.titulo) == 0) {
+		int aux=this.titulo.compareTo(material.titulo);
+		if(aux == 0) {
 			return (this.precio().compareTo(material.precio()));
 		}
 		else {
-			return this.titulo.compareTo(material.titulo);
+			return aux;
 	
 		}
 }
