@@ -66,5 +66,34 @@ public class BibliotecaList implements Biblioteca{
 			Collections.sort(this.materiales, (m1,m2)->m1.precio().intValue()-m2.precio().intValue());
 		}
 	}
+	
+	@Override
+	public MaterialCapacitacion buscar(Integer precio){
+		Collections.sort(this.materiales, (m1,m2)->m1.getCosto().intValue()-m2.getCosto().intValue());
+		return buscadorBinario(0,this.materiales.size(),precio);
+		}
+
+	private MaterialCapacitacion buscadorBinario(Integer i, Integer f, Integer c) throws MaterialNoEncontradoException{
+			int mitad=i+((f-i)/2);
+			int aux = this.materiales.get(mitad).getCosto().intValue();
+			if(c!=aux && ((f-i)<2)) throw new MaterialNoEncontradoException(c);
+			else {
+			if(aux == c) {
+				return this.materiales.get(mitad); 
+			}
+			else {
+				if(c<aux) {
+					return buscadorBinario(i,mitad,c);
+				}
+				else{
+					
+					return buscadorBinario(mitad,f,c);
+				}
+					
+			}
+			}
+	}
+
+
 
 }
