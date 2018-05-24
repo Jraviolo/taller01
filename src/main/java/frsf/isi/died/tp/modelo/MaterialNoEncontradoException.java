@@ -6,10 +6,4 @@ public class MaterialNoEncontradoException extends RuntimeException{
 		super("Material de precio "+ costo +" no encontrado.");
 	}
 
-/*	public MaterialNoEncontradoException() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-*/	
-	
 }

@@ -8,6 +8,7 @@ import frsf.isi.died.tp.modelo.productos.MaterialCapacitacion;
 
 public class BibliotecaList implements Biblioteca{
 	
+	private int hola;
 	
 	private ArrayList<MaterialCapacitacion> materiales;
 		
