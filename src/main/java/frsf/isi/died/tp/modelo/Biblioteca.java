@@ -53,7 +53,7 @@ public interface Biblioteca {
 	 * @param b
 	 */
 	public void ordenarPorPrecio(Boolean b);
-
+	public Collection<MaterialCapacitacion> rango(Double costoMinimo,Double costoMax);
 	public MaterialCapacitacion buscar(Integer costo);
 
 	
