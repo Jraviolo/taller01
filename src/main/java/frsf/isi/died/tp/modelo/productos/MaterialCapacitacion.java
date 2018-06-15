@@ -135,18 +135,29 @@ public abstract class MaterialCapacitacion implements Ordenable, Comparable<Mate
 	}
 	
 
-	/* invocamos el metodo abstracto precio(),
-	 * el mismo funciona ya que esta redefinido en las clases Libro y Video\
-	 */
-	public boolean equals(Object anObject) {
-		MaterialCapacitacion aux;
-		if(anObject instanceof MaterialCapacitacion) {
-			aux=(MaterialCapacitacion) anObject;
-			if(this.titulo.equalsIgnoreCase(aux.titulo)){
-				return true;
-			}							
-		}
-		return false;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MaterialCapacitacion other = (MaterialCapacitacion) obj;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
+		return true;
 	}
 	
 	public int compareTo(MaterialCapacitacion material) {
