@@ -216,43 +216,88 @@ public class Grafo<T> {
         return this.buscarCaminoNSaltos(origen, destino, saltos, new HashSet<Vertice>());
          
     }
-    private List<T> buscarCaminoNSaltos(Vertice<T> n1,Vertice<T> n2,Integer saltos,HashSet<Vertice> visitados){
+ /*   private List<T> buscarCaminoNSaltos(Vertice<T> n1,Vertice<T> n2,Integer saltos,HashSet<Vertice> visitados){
         ArrayList<T> resultado = new ArrayList<>();
        //TODO
         List<Vertice<T>> adyacentes = new ArrayList<Vertice<T>>();
         visitados.add(n1);
         adyacentes=this.getAdyacentes(n1);
-        //resultado.add(n1.getValor());
-        
+              
         if(saltos==1) {
         	for(int j=0; j<adyacentes.size();j++) {
         		if(adyacentes.get(j).equals(n2)) {
-        	
-        	resultado.add(n2.getValor());
-        	}
+        		resultado.add(n2.getValor());
         		}
-       
+        	}
         }
-        	else {
-        		for(int i=0; i<adyacentes.size();i++) {
-        		if(!visitados.contains(adyacentes.get(i))) {
-        			
+        else {
+        	for(int i=0; i<adyacentes.size();i++) {
+        	//	if(!visitados.contains(adyacentes.get(i))) {        			
         			resultado.add(n1.getValor());
-        			//resultado.add(adyacentes.get(i).getValor());
-        			//resultado.addAll(this.buscarCaminoNSaltos(adyacentes.get(i), n2, saltos-1, visitados));
+  
         			if(this.buscarCaminoNSaltos(adyacentes.get(i), n2, saltos-1, visitados)!=null) {
         				resultado.addAll(this.buscarCaminoNSaltos(adyacentes.get(i), n2, saltos-1, visitados));
         				resultado.add(n1.getValor());
         			}
-        		}
-        	//resultado.addAll(this.buscarCaminoNSaltos(adyacentes.get(i), n2, saltos-1, visitados));
+        	//	}
+        	
         		}
         	}
         
         return resultado;
     }
 
-
+*/
+    
+    private List<T> buscarCaminoNSaltos(Vertice<T> n1,Vertice<T> n2,Integer saltos,HashSet<Vertice> visitados){
+        ArrayList<T> resultado = new ArrayList<>();
+       //TODO
+        List<Vertice<T>> adyacentes = new ArrayList<Vertice<T>>();
+        visitados.add(n1);
+        adyacentes=this.getAdyacentes(n1);
+        if(saltos==1) {
+        	resultado.add(n1.getValor());
+            resultado.add(n2.getValor());
+        return resultado;
+        }
+        for (int i=0; i<adyacentes.size(); i++) {
+if (saltos==2 && this.esAdyacente(adyacentes.get(i), n2)) {
+	resultado.add(adyacentes.get(i).getValor());
+resultado.add(n2.getValor());
+return resultado;
+	}
+else {
+visitados.add(adyacentes.get(i));
+Vertice<T> aux=null;
+Integer salto=saltos;
+resultado.add(adyacentes.get(i).getValor());
+        	List<Vertice<T>> ady=new  ArrayList<Vertice<T>>();
+ady=this.getAdyacentes(adyacentes.get(i));
+        	for (int j=0; j<ady.size() || salto<2; j++) {
+if (!visitados.contains(ady.get(j))) {        		
+        		
+	if (this.esAdyacente(ady.get(j), n2) && salto==2) {
+        				resultado.add(ady.get(j).getValor());        		
+resultado.add(n2.getValor());
+return resultado;
+        	        	}
+        		if (salto>2 && this.esAdyacente(aux, ady.get(j))) {
+        			resultado.add(aux.getValor());
+        			salto--;
+        		}
+aux=ady.get(j);        		
+        		ady.addAll(this.getAdyacentes(ady.get(j)));
+        		visitados.add(ady.get(j));
+aux=ady.get(j);        		
+}
+        	}
+        	resultado.clear();
+        visitados.clear();
+        resultado.add(n1.getValor());
+}
+        }
+return new ArrayList<T>();    
+    }
 
 
 /**
