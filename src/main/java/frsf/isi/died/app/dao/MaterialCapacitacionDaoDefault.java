@@ -54,6 +54,7 @@ public class MaterialCapacitacionDaoDefault implements MaterialCapacitacionDao{
 		GRAFO_MATERIAL.addNodo(mat);	
 		biblioteca.agregar(mat);
 		try {
+			
 			dataSource.agregarFilaAlFinal("libros.csv", mat);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
