@@ -6,7 +6,8 @@
 package frsf.isi.died.tp.modelo.productos;
 
 import java.util.ArrayList;
-
+import java.util.Date;
+import java.util.List;
 
 import frsf.isi.died.tp.util.Ordenable;
 
@@ -25,6 +26,7 @@ import frsf.isi.died.tp.util.Ordenable;
  */
 public abstract class MaterialCapacitacion implements Ordenable, Comparable<MaterialCapacitacion>{
 	protected Integer id;
+	protected Integer calificacion;
 	public Integer getId() {
 		return id;
 	}
@@ -63,21 +65,25 @@ public abstract class MaterialCapacitacion implements Ordenable, Comparable<Mate
 
 	/**
 	 * Constructor por defecto
-	 */
+	 
 	public MaterialCapacitacion() {
 		this(0,"en desarrollo",0.0);
 	}
-
+*/
+	
 	/**
 	 * Constructor que recibe como argumento un ID y un Titulo
 	 * 
 	 * @param id
 	 * @param titulo
-	 */
+	 
+
 	public MaterialCapacitacion(Integer id, String titulo) {
 		this(id,titulo,0.0);
 	}
 
+	*/
+	
 	/**
 	 * Constructor que recibe como argumento un ID y un costo
 	 * 
@@ -121,12 +127,15 @@ public abstract class MaterialCapacitacion implements Ordenable, Comparable<Mate
 	//  retornando el titulo, y el precio 	 * usando el formato : 
 	// [Titulo: <titulo> ; Precio: <precio> ]
 	
-	public String toString(){
+/* TO STRING VIEJO
+   	
+  	public String toString(){
 		String stringAux="[Titulo: "+this.titulo+"; Precio: "+this.precio()+"]";
 		
 	return stringAux;
 	}
-	
+
+*/	
 	// TODO 10: implementar Ordenable
 	public final int valor(){
 		double precio=precio();
@@ -171,6 +180,88 @@ public abstract class MaterialCapacitacion implements Ordenable, Comparable<Mate
 		}
 }
 	
+	public Integer getCalificacion() {
+		return calificacion;
+	}
+
+	public void setCalificacion(Integer calificacion) {
+		this.calificacion = calificacion;
+	}
+/**
+ *fecha de publicacion del material 
+ */
+	protected Date fechaPublicacion;
 	
 	
+	public Date getFechaPublicacion() {
+	return fechaPublicacion;
+}
+
+public void setFechaPublicacion(Date fechaPublicacion) {
+	this.fechaPublicacion = fechaPublicacion;
+}
+/**
+ *relevancia del material. 
+ */
+protected Relevancia relevancia;
+
+	public Relevancia getRelevancia() {
+	return relevancia;
+}
+
+public void setRelevancia(Relevancia relevancia) {
+	this.relevancia = relevancia;
+}
+
+	/**
+	 * Constructor por defecto
+	 */
+	public MaterialCapacitacion() {
+		this(0,"en desarrollo",0.0, 0, null);
+	}
+
+	/**
+	 * Constructor que recibe como argumento un ID y un Titulo
+	 * 
+	 * @param id
+	 * @param titulo
+	 */
+	
+	public MaterialCapacitacion(Integer id, String titulo) {
+		this(id,titulo,0.0, 0, null);
+	}
+
+	/**
+	 * Constructor que recibe como argumento un ID y un costo
+	 * 
+	 * @param id
+	 * @param titulo
+	 * 
+	 */
+	
+public MaterialCapacitacion(Integer id,String  titulo,Double  costo,Integer  cl,Date fecha) {
+this.id=id;
+this.titulo=titulo;
+this.costo=costo;
+	this.calificacion=cl;
+this.fechaPublicacion=fecha;
+	
+}	
+
+public String toString(){
+	String stringAux="[Titulo: "+this.titulo+"; Precio: "+this.precio()+"; fecha publicación: "+this.fechaPublicacion+"]";
+	
+return stringAux;
+}
+
+public List<String> asCsvRow() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+public void loadFromStringRow(List<String> datos) {
+	// TODO Auto-generated method stub
+	
+}
+
 }
